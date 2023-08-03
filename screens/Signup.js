@@ -29,13 +29,11 @@ const SignUp = () => {
       <View style={[styles.name, styles.btnLayout]}>
         <View style={[styles.emailChild, styles.childLayout]} />
         <TextInput style={[styles.emailAddress, styles.messageIconPosition]} placeholder=" User Name" placeholderTextColor={'#6a6a6a'} />
-         
-        
         <Image
           style={styles.unionIcon}
           resizeMode="cover"
           source={require("../assets/union.png")}
-        />
+        /> 
       </View>
       <View style={[styles.password, styles.btnLayout]}>
         <View style={[styles.emailChild, styles.childLayout]} />
@@ -56,8 +54,6 @@ const SignUp = () => {
         placeholderTextColor={'#6a6a6a'}
         secureTextEntry={secureTextEntry}
         />
-          
-       
       </View>
       <View style={[styles.btn, styles.btnLayout]}>
         <View style={[styles.btnChild, styles.childLayout]} />
@@ -73,11 +69,7 @@ const SignUp = () => {
         </Pressable>
        
       </Text>
-      <Image
-        style={styles.chevronLeftIcon}
-        resizeMode="cover"
-        source={require("../assets/chevronleft.png")}
-      />
+     
       <View style={styles.or}>
         <Text style={styles.orContinueWith}>Or Continue with</Text>
         <View style={[styles.orChild, styles.orItemLayout]} />
@@ -92,8 +84,6 @@ const SignUp = () => {
   );
 };
         
-      
-
 const styles = StyleSheet.create({
   emailAddressClr: {
     color: "#6a6a6a",
@@ -136,7 +126,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   registerAccount: {
-    top: 100,
+    top: 30,
     fontSize: 30,
     lineHeight: 30,
     fontWeight: "600",
@@ -147,7 +137,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   fillYourDetails: {
-    top: 140,
+    top: 90,
     lineHeight: 24,
     width: 229,
     fontSize: 16,
@@ -174,7 +164,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   email: {
-    top: 296,
+    top: 236,
   },
   unionIcon: {
     height: "40.74%",
@@ -189,7 +179,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   name: {
-    top: 218,
+    top: 158,
   },
   eyeSlashIcon: {
     top: 21,
@@ -206,7 +196,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   password: {
-    top: 374,
+    top: 314,
   },
   btnChild: {
     backgroundColor: "#4ca6a8",
@@ -220,7 +210,7 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   btn: {
-    top: 468,
+    top: 398,
   },
   logIn: {
     color: "#1a1d1e",
@@ -230,6 +220,7 @@ const styles = StyleSheet.create({
     top: 708,
     left: 70,
     lineHeight: 26,
+    marginBottom:10
   },
   chevronLeftIcon: {
     top: 39,
@@ -262,7 +253,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   or: {
-    top: 562,
+    top: 485,
     left: 91,
     width: 194,
     height: 106,
@@ -276,5 +267,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 });
-
-export default SignUp;
+export default SignUp;    
+        
+             
+         

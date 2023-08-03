@@ -1,7 +1,44 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Image,TextInput,Pressable } from "react-native";
+import { useState } from "react";
+import { } from "react-native";
+import { Modal,Button,SafeAreaView,Text, StyleSheet, View, Image,TextInput,Pressable } from "react-native";
 
-const LogIn = () => {
+const LogIn = ({navigation}) => {
+
+  //idk if we have to use useRef hook insted, i will see that
+  const [email,setEmail] = useState(null)
+  const [password,setPassword] = useState(null)
+
+  // i thought it is better to use modal rather than another screen for the forgot password
+  const [isModalVisible,setIsModalVisible] = useState(false)
+
+  const [secureTextEntry,setSecureTextEntry] = useState(true)
+  const PasswordInputHandler=({value})=>{
+    //the input validation goes here
+  }
+
+  const EmailInputVlidation = ({value})=>{
+    //email input validation goes here,regex
+  }
+
+  const LoginHandler=()=>{
+
+    //login handling goes here
+  }
+
+  const passwordVisibilityHandler=({value})=>{
+    switch(value){
+      case true:
+        setSecureTextEntry(false)
+        break;
+      case false:
+        setSecureTextEntry(true)
+        break;
+      default:
+        setSecureTextEntry(true)
+    }
+  }
+
   return (
     <View style={styles.logIn}>
       <Text style={styles.welcomeBack}>Welcome Back!</Text>
@@ -10,8 +47,11 @@ const LogIn = () => {
       </Text>
       <View style={[styles.email, styles.btnLayout]}>
         <View style={[styles.emailChild, styles.childLayout]} />
-        <TextInput style={[styles.emailAddress, styles.emailAddressTypo]} placeholder="Email Address" placeholderTextColor={'#6a6a6a'}/>
-          
+        <TextInput style={[styles.emailAddress, styles.emailAddressTypo]} 
+        placeholder="Email Address"
+        placeholderTextColor={'#6a6a6a'}
+        onChangeText={(value)=>EmailInputVlidation(value)}  
+        value={email} />
         
         <Image
           style={[styles.messageIcon, styles.iconPosition]}
@@ -21,25 +61,33 @@ const LogIn = () => {
       </View>
       <View style={[styles.password, styles.btnLayout]}>
         <View style={[styles.emailChild, styles.childLayout]} />
+        <Pressable onPress={()=>passwordVisibilityHandler(secureTextEntry)}>
         <Image
           style={styles.eyeSlashIcon}
           resizeMode="cover"
           source={require("../assets/eyeslash.png")}
         />
+        </Pressable>
         <Image
           style={[styles.lockIcon, styles.iconPosition]}
           resizeMode="cover"
           source={require("../assets/lockicon.png")}
         />
-        <TextInput style={[styles.emailAddress, styles.emailAddressTypo]} placeholder="Password" placeholderTextColor={'#6a6a6a'} /> 
+        <TextInput style={[styles.emailAddress, styles.emailAddressTypo]} 
+        placeholder="Password" 
+        placeholderTextColor={'#6a6a6a'}
+        onChangeText={(value)=>PasswordInputHandler(value)}
+        value={password}
+        secureTextEntry={secureTextEntry}
+        /> 
          
        
       </View>
       <View style={[styles.btn, styles.btnLayout]}>
         <View style={[styles.btnChild, styles.childLayout]} />
-        <Pressable onPress={()=>{
+        <Pressable onPress={()=>LoginHandler}>
 
-        }}>
+        
             <Text style={[styles.logIn1, styles.logIn1Typo]}>LOG IN</Text>
         </Pressable>
         
@@ -55,22 +103,43 @@ const LogIn = () => {
         />
       </View>
       
-      <Pressable onPress={()=>{
+      <Pressable onPress={()=>setIsModalVisible(true)}>
 
-      }}>
       <Text style={[styles.forgetPassword, styles.emailAddressTypo]}>
         Forget Password?
        </Text>
       </Pressable> 
       
+      
       <Text style={[styles.newUserCreateContainer, styles.logIn1Typo]}>
         <Text style={styles.newUser}>{`New User? `}</Text>
-        <Pressable onPress={()=>{
-            console.log('first')
+        <Pressable onPress={()=>{navigation.navigate('SignUp')
         }}>
         <Text style={styles.createAccount}>Create Account</Text>
         </Pressable>
       </Text>
+
+      <Modal
+      visible={isModalVisible}
+      animationType="fade"
+      onRequestClose={()=>setIsModalVisible(false)}
+      >
+        <SafeAreaView style={{
+          flex:1,
+          justifyContent:'center',
+          alignItems:'center',
+          backgroundColor:'6a6a6a'
+        }}>
+          <Text
+          style={{color:'red'}}
+          > Reset Password Modal Screen</Text>
+          <Button title='Go Back' onPress={()=>setIsModalVisible(false)}/>
+
+          {/* we didn't got the design for the look of the screen UI */}
+        </SafeAreaView>
+      
+
+      </Modal>
     </View>
   );
 };
@@ -214,10 +283,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   forgetPassword: {
-    top: 360,
-    left: 249,
-    fontSize: 12,
-    lineHeight: 12,
+    top: 370,
+    left: 239,
+    fontSize: 13,
+    lineHeight: 14,
     color: "#6a6a6a",
   },
   newUser: {
