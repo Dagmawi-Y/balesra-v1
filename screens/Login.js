@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { } from "react-native";
-import { Modal,Button,SafeAreaView,Text, StyleSheet, View, Image,TextInput,Pressable } from "react-native";
+import { Modal,Button,SafeAreaView,Text, StyleSheet, View, Image,TextInput,TouchableOpacity,Pressable } from "react-native";
 
 const LogIn = ({navigation}) => {
 
@@ -22,8 +22,12 @@ const LogIn = ({navigation}) => {
   }
 
   const LoginHandler=()=>{
-
+     navigation.navigate('Tab')
     //login handling goes here
+  }
+
+  const forgetPasswordHandler=()=>{
+   setIsModalVisible(true)
   }
 
   const passwordVisibilityHandler=({value})=>{
@@ -85,12 +89,13 @@ const LogIn = ({navigation}) => {
       </View>
       <View style={[styles.btn, styles.btnLayout]}>
         <View style={[styles.btnChild, styles.childLayout]} />
-        <Pressable onPress={()=>LoginHandler}>
 
+        <TouchableOpacity onPress={()=>navigation.navigate('Tab')}>
+         <Text style={[styles.logIn1, styles.logIn1Typo]}>LOG IN</Text>
+        </TouchableOpacity>
         
-            <Text style={[styles.logIn1, styles.logIn1Typo]}>LOG IN</Text>
-        </Pressable>
         
+            
       </View>
       <View style={styles.or}>
         <Text style={styles.orContinueWith}>Or Continue with</Text>
@@ -103,20 +108,19 @@ const LogIn = ({navigation}) => {
         />
       </View>
       
-      <Pressable onPress={()=>setIsModalVisible(true)}>
+      <TouchableOpacity onPress={forgetPasswordHandler}>
 
       <Text style={[styles.forgetPassword, styles.emailAddressTypo]}>
         Forget Password?
        </Text>
-      </Pressable> 
+      </TouchableOpacity> 
       
       
       <Text style={[styles.newUserCreateContainer, styles.logIn1Typo]}>
         <Text style={styles.newUser}>{`New User? `}</Text>
-        <Pressable onPress={()=>{navigation.navigate('SignUp')
-        }}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}}>
         <Text style={styles.createAccount}>Create Account</Text>
-        </Pressable>
+        </TouchableOpacity>
       </Text>
 
       <Modal

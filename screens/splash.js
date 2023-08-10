@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Image,Pressable } from "react-native";
+import { Text, StyleSheet, View, Image,Pressable, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Splash = () => {
@@ -14,11 +14,11 @@ const navigation = useNavigation();
       </Text>
       <View style={[styles.btn, styles.btnLayout]}>
         <View style={[styles.btnChild, styles.childPosition]} />
-        <Pressable onPress={()=>navigation.navigate('Login')}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
         <Text style={[styles.letsGetStarted, styles.letsGetStartedPosition]}>
           Let’s Get Started
         </Text>
-        </Pressable>
+        </TouchableOpacity>
        
         <Image
           style={[styles.arrowRightIcon, styles.letsGetStartedPosition]}
@@ -133,9 +133,5 @@ const styles = StyleSheet.create({
 
 export default Splash;
     
-    
      
-    
-
-
-       
+     

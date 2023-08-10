@@ -8,16 +8,16 @@ const Stack = createStackNavigator();
 const StackRoute=()=>{
 return(
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="BottomNavigation">
+        <Stack.Navigator initialRouteName="Splash">
              <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
              <Stack.Screen name="Login" component={LogIn} options={{headerShown:false}}/>
              <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:true}}/>
-            <Stack.Screen name="Tab" component={BottomNavigation} options={{headerShown:false}}/>
+             <Stack.Screen name="Tab" component={BottomNavigation} options={{headerShown:false}} />
         </Stack.Navigator>
     </NavigationContainer>
       )
  }
-export default StackRoute            
+export default StackRoute        
           
  
 

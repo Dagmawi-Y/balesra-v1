@@ -7,6 +7,6 @@ const Settings = () => {
       <Text>Settings</Text>
     </SafeAreaView>
   )
-} 
+}
 
 export default Settings
